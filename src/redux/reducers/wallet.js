@@ -1,3 +1,5 @@
+import { GET_API } from '../actions';
+
 const INITIAL_STATE = {
   currencies: [], // array de string
   expenses: [], // array de objetos, com cada objeto tendo as chaves id, value, currency, method, tag, description e exchangeRates
@@ -5,11 +7,16 @@ const INITIAL_STATE = {
   idToEdit: 0,
 };
 
-const user = (state = INITIAL_STATE, action) => {
+const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+  case GET_API:
+    return {
+      ...state,
+      currencies: Object.keys(action.payload).filter((element) => element !== 'USDT'),
+    };
   default:
     return state;
   }
 };
 
-export default user;
+export default wallet;
