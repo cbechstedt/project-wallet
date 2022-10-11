@@ -73,13 +73,20 @@ class WalletForm extends Component {
             <option value="Saúde">Saúde</option>
           </select>
         </label>
+
+        <button type="button">
+          Adicionar despesa
+        </button>
       </form>
     );
   }
 }
 
 WalletForm.propTypes = {
-  responseApi: PropTypes.func,
+  dispatch: PropTypes.func,
+  responseApi: PropTypes.shape({
+    map: PropTypes.func,
+  }),
 }.isRequired;
 
 const mapStateToProps = (state) => ({
