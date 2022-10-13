@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class Header extends Component {
   render() {
     const { email, expenses } = this.props;
-    console.log(expenses);
+    // console.log(expenses);
 
     const sum = expenses.reduce((acc, curr) => {
       const { exchangeRates } = curr;
