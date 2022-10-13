@@ -46,12 +46,14 @@ class Login extends Component {
             type="text"
             name="email"
             onChange={ this.handleChange }
+            placeholder="E-mail"
           />
           <input
             data-testid="password-input"
             type="password"
             name="password"
             onChange={ this.handleChange }
+            placeholder="Senha"
           />
           <button
             type="submit"
