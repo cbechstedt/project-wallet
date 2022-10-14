@@ -28,7 +28,7 @@ class Table extends Component {
               <td>{element.method}</td>
               <td>{Number(element.value).toFixed(2)}</td>
               <td>{element.exchangeRates[element.currency].name}</td>
-              <td>{element.currency}</td>
+
               <td>{Number(element.exchangeRates[element.currency].ask).toFixed(2)}</td>
               <td>
                 {(Number(element.value)
