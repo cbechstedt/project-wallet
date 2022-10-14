@@ -3,14 +3,6 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
 class Table extends Component {
-  teste = () => {
-    const obj = {
-      nome: 'chris',
-      idade: 29,
-      país: 'Brasil',
-    };
-  };
-
   render() {
     const { expenses } = this.props;
     return (
