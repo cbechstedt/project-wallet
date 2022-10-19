@@ -1,17 +1,26 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { removeExpense } from '../redux/actions';
+import { removeExpense, editExpense } from '../redux/actions';
 
 class Table extends Component {
   handleClick = ({ target }) => {
     const { id } = target;
     // console.log(id);
     const { expenses, dispatch } = this.props;
-    const expensesUpdated = expenses.filter((element) => element.id !== Number(id));
+    const stayedExpenses = expenses.filter((element) => element.id !== Number(id));
     // console.log(expenses);
-    // console.log(expensesUpdated);
-    dispatch(removeExpense(expensesUpdated));
+    // console.log(stayedExpenses);
+    dispatch(removeExpense(stayedExpenses));
+  };
+
+  handleClickEdit = ({ target }) => {
+    const { id } = target;
+    const { expenses, dispatch } = this.props;
+    const expenseToEdit = expenses.find((element) => element.id === Number(id));
+    console.log(expenses);
+    console.log(expenseToEdit);
+    dispatch(editExpense(expenseToEdit));
   };
 
   render() {
@@ -47,6 +56,15 @@ class Table extends Component {
               </td>
               <td>Real</td>
               <td>
+                <button
+                  data-testid="edit-btn"
+                  type="button"
+                  onClick={ this.handleClickEdit }
+                  id={ element.id }
+                >
+                  Editar
+                </button>
+                {' '}
                 <button
                   data-testid="delete-btn"
                   type="button"

@@ -1,4 +1,8 @@
-import { ADD_EXPENSES, GET_CURRENCY, REMOVE_EXPENSE } from '../actions';
+import { ADD_EXPENSES,
+  EDIT_EXPENSE,
+  GET_CURRENCY,
+  REMOVE_EXPENSE,
+  UPDATE_EXPENSE } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -24,6 +28,25 @@ const wallet = (state = INITIAL_STATE, action) => {
       ...state,
       expenses: action.payload,
     };
+  case EDIT_EXPENSE:
+    return {
+      ...state,
+      editor: true,
+      idToEdit: action.payload.id,
+    };
+  case UPDATE_EXPENSE: {
+    const expensesUpdated = state.expenses.map((element) => {
+      if (action.payload.id === element.id) {
+        return action.payload;
+      }
+      return element;
+    });
+    return {
+      ...state,
+      editor: false,
+      expenses: expensesUpdated,
+    };
+  }
   default:
     return state;
   }
